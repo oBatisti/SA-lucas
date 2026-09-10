@@ -4,39 +4,19 @@
     <meta charset="UTF-8">
     <title>Barbearia Navalha de Ouro</title>
     <style>
-        * { box-sizing: border-box; }
-        body { margin: 0; min-height: 100vh; font-family: Arial, sans-serif; background: #f6f4f0; color: #2d2926; }
-        header { background: #2d2118; color: #fff; padding: 18px max(24px, calc((100% - 1060px) / 2)); display: flex; justify-content: space-between; align-items: center; }
-        .marca { font-size: 20px; font-weight: bold; }
-        nav a { margin-left: 20px; color: #f1d494; text-decoration: none; font-weight: bold; }
-        nav a:hover { color: #fff; }
-        main { max-width: 1060px; margin: 0 auto; padding: 72px 24px; }
-        .hero { padding: 55px; border-radius: 18px; color: #fff; background: linear-gradient(125deg, #3c2a1d, #9b691c); box-shadow: 0 14px 30px #2d211833; }
-        h1 { margin: 0 0 12px; font-size: clamp(32px, 5vw, 52px); }
-        .hero p { max-width: 580px; font-size: 18px; line-height: 1.6; color: #f8ebcb; }
-        .painel { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 28px; }
-        .card { flex: 1 1 260px; padding: 28px; border-radius: 14px; background: #fff; box-shadow: 0 6px 18px #2d211812; }
-        .numero { display: block; color: #a36c12; font-size: 42px; font-weight: bold; }
-        .botao { display: inline-block; margin-top: 18px; padding: 12px 18px; border-radius: 8px; background: #a36c12; color: #fff; text-decoration: none; font-weight: bold; }
-        .botao:hover { background: #7c4e0c; }
-        @media (max-width: 600px) { header { align-items: flex-start; flex-direction: column; gap: 12px; } nav a { margin: 0 16px 0 0; } main { padding-top: 36px; } .hero { padding: 32px 25px; } }
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f1ea; color: #333; }
+        h1 { color: #b8860b; }
+        nav a { margin-right: 15px; text-decoration: none; color: #8b4513; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        .destaque { font-size: 22px; margin-top: 30px; }
     </style>
 </head>
 <body>
-    <header>
-        <span class="marca">💈 Navalha de Ouro</span>
-        <nav><a href="{{ url_for('inicio') }}">Início</a><a href="{{ url_for('agendamentos') }}">Agendamentos</a></nav>
-    </header>
-    <main>
-        <section class="hero">
-            <h1>Seu estilo, nosso cuidado.</h1>
-            <p>Bem-vindo à Barbearia Navalha de Ouro. Acompanhe os horários e encontre o atendimento perfeito para você.</p>
-            <a class="botao" href="{{ url_for('agendamentos') }}">Ver agenda</a>
-        </section>
-        <section class="painel">
-            <article class="card"><span class="numero">{{ agendamentos | length }}</span><strong>agendamentos cadastrados</strong><p>Consulte todos os atendimentos e seus respectivos status.</p></article>
-            <article class="card"><strong>Agenda organizada</strong><p>Visualize os horários em ordem de data e acompanhe cada atendimento em poucos cliques.</p></article>
-        </section>
-    </main>
+    <h1>💈 Barbearia Navalha de Ouro</h1>
+    <nav>
+        <a href="{{ url_for('inicio') }}">Início</a>
+        <a href="{{ url_for('agendamentos') }}">Agendamentos</a>
+    </nav>
+    <p class="destaque">Total de agendamentos: {{ agendamentos | length }}</p>
 </body>
 </html>
