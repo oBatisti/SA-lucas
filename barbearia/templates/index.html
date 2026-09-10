@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Barbearia Navalha de Ouro</title>
+    <style>
+        /* Estilos gerais do sistema */
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f1ea; color: #333; }
+        h1 { color: #b8860b; }
+        nav a { margin-right: 15px; text-decoration: none; color: #8b4513; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        .destaque { font-size: 22px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <!-- Cabecalho com o nome da barbearia -->
+    <h1>💈 Barbearia Navalha de Ouro</h1>
+
+    <!-- Menu de navegacao usando url_for() para gerar as URLs -->
+    <nav>
+        <a href="{{ url_for('inicio') }}">Início</a>
+        <a href="{{ url_for('agendamentos') }}">Agendamentos</a>
+    </nav>
+
+    <!-- Total de agendamentos usando o filtro length do Jinja2 -->
+    <p class="destaque">Total de agendamentos: {{ agendamentos | length }}</p>
+</body>
+</html>

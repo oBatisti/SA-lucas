@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Agendamentos - Barbearia Navalha de Ouro</title>
+    <style>
+        /* Estilos da tabela de agendamentos */
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f1ea; color: #333; }
+        h1 { color: #b8860b; }
+        nav a { margin-right: 12px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; background: #fff; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background: #8b4513; color: #fff; }
+        /* Cores de destaque por status */
+        tr.concluido { background-color: #c8f7c5; }   /* linha verde */
+        tr.cancelado { background-color: #f7c5c5; }   /* linha vermelha */
+        tr.agendado  { background-color: #ffffff; }   /* linha normal */
+    </style>
+</head>
+<body>
+    <h1>💈 Agendamentos</h1>
+
+    <!-- Links de filtro por status, gerados com url_for() -->
+    <nav>
+        <a href="{{ url_for('agendamentos') }}">Todos</a>
+        <a href="{{ url_for('agendamentos_por_status', status='Agendado') }}">Agendados</a>
+        <a href="{{ url_for('agendamentos_por_status', status='Concluído') }}">Concluídos</a>
+        <a href="{{ url_for('agendamentos_por_status', status='Cancelado') }}">Cancelados</a>
+    </nav>
+
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Cliente</th>
+            <th>Serviço</th>
+            <th>Barbeiro</th>
+            <th>Data</th>
+            <th>Horário</th>
+            <th>Status</th>
+            <th>Detalhe</th>
+        </tr>
+        <!-- Loop pelos agendamentos com loop.index como numero da linha -->
+        {% for agendamento in agendamentos %}
+            <!-- if/elif para destacar a linha conforme o status -->
+            {% if agendamento.status == "Concluído" %}
+                <tr class="concluido">
+            {% elif agendamento.status == "Cancelado" %}
+                <tr class="cancelado">
+            {% else %}
+                <tr class="agendado">
+            {% endif %}
+                <td>{{ loop.index }}</td>
+                <td>{{ agendamento.cliente }}</td>
+                <td>{{ agendamento.servico }}</td>
+                <td>{{ agendamento.barbeiro }}</td>
+                <td>{{ agendamento.data }}</td>
+                <td>{{ agendamento.horario }}</td>
+                <td>{{ agendamento.status }}</td>
+                <!-- Link para a pagina de detalhe do agendamento -->
+                <td><a href="{{ url_for('detalhe', id=agendamento.id) }}">Ver</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <p><a href="{{ url_for('inicio') }}">← Voltar ao início</a></p>
+</body>
+</html>

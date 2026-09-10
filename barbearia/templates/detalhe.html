@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhe do agendamento</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f1ea; color: #333; }
+        h1 { color: #b8860b; }
+        .cartao { max-width: 600px; padding: 20px; background: #fff; border: 1px solid #ccc; border-radius: 6px; }
+        dt { font-weight: bold; margin-top: 12px; }
+        dd { margin: 4px 0; }
+        a { color: #8b4513; font-weight: bold; }
+    </style>
+</head>
+<body>
+    {% if agendamento %}
+        <h1>Detalhe do agendamento #{{ agendamento.id }}</h1>
+        <section class="cartao">
+            <dl>
+                <dt>Cliente</dt><dd>{{ agendamento.cliente }}</dd>
+                <dt>Telefone</dt><dd>{{ agendamento.telefone }}</dd>
+                <dt>Serviço</dt><dd>{{ agendamento.servico }}</dd>
+                <dt>Preço</dt><dd>R$ {{ '%.2f'|format(agendamento.preco) }}</dd>
+                <dt>Barbeiro</dt><dd>{{ agendamento.barbeiro }}</dd>
+                <dt>Data</dt><dd>{{ agendamento.data }}</dd>
+                <dt>Horário</dt><dd>{{ agendamento.horario }}</dd>
+                <dt>Status</dt><dd>{{ agendamento.status }}</dd>
+            </dl>
+        </section>
+    {% else %}
+        <h1>Agendamento não encontrado</h1>
+        <p>Não existe um agendamento com o identificador informado.</p>
+    {% endif %}
+    <p><a href="{{ url_for('agendamentos') }}">← Voltar para a listagem</a></p>
+</body>
+</html>
