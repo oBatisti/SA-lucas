@@ -1,6 +1,6 @@
 Barbearia Navalha de Ouro
 
-Integrantes: preencher com os nomes da equipe.
+Integrantes: Eduardo Batisti Da Silva, Adriel Cavalheiro, Igor Derreti
 
 Como executar:
 1. No MySQL Workbench, execute o arquivo banco.sql.
